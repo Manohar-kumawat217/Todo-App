@@ -3,6 +3,7 @@ const router = express.Router();
 const { body } = require("express-validator");
 const taskController = require("../controller/task.controller");
 
+// Create a new task
 router.post(
   "/task",
   [
@@ -16,4 +17,13 @@ router.post(
   taskController.newTask
 );
 
+// Get All tasks
+router.get("/task", taskController.getAllTasks);
+
+//Mark task as done
+router.put("/task/:id", taskController.markTaskAsDone);
+
+router.delete("/task/:id", taskController.deleteTask);
+
+// Export the router
 module.exports = router;

@@ -12,3 +12,25 @@ module.exports.createTask = async ({ taskName, description, markAsDone }) => {
 
   return task;
 };
+
+// ye function database me se sare tasks fetch karta hai
+module.exports.fetchAllTasks = async () => {
+  const allTasks = await Task.find({});
+  return allTasks;
+};
+
+//ye function task ko mark as done karta hai
+module.exports.markTaskAsDone = async (id) => {
+  const markTask = await Task.findByIdAndUpdate(
+    id,
+    { markAsDone: true },
+    { new: true }
+  );
+  return markTask;
+};
+
+module.exports.deleteTask = async (id) => {
+  const deletedTask = await Task.findByIdAndDelete(id);
+  console.log(deletedTask);
+  return deletedTask;
+};

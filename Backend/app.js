@@ -18,4 +18,24 @@ app.get("/", (req, res) => {
 });
 
 app.use("/todo", taskRoutes);
+
+app.get("*", (req, res) => {
+  res.status(404).send("404 Not Found, This API endpoint does not exist");
+});
+
+app.post("*", (req, res) => {
+  res.status(404).send("404 Not Found, This API endpoint does not exist");
+});
+
+app.put("*", (req, res) => {
+  res.status(404).send("404 Not Found, This API endpoint does not exist");
+});
+
+app.patch("*", (req, res) => {
+  res.status(404).send("404 Not Found, This API endpoint does not exist");
+});
+
+app.delete("*", (req, res) => {
+  res.status(404).send("404 Not Found, This API endpoint does not exist");
+});
 module.exports = app;
