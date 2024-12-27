@@ -10,14 +10,14 @@ const Home = () => {
           <div className="flex flex-col mt-8 m-8  ">
             <Link
               to="/add-task"
-              className="flex items-center justify-start  bg-white text-black text-xl font-medium w-full py-4 sm:w-1/2  sm:py-2 text-xl mt-2 mb-2 rounded-md"
+              className="flex items-center justify-start  bg-white hover:bg-gray-200 text-black text-xl font-medium w-full py-4 sm:w-1/3  sm:py-2 text-xl mt-2 mb-2 rounded-md"
             >
               <i className="fa-solid fa-circle-plus px-4 text-2xl text-gray-600 pr-8"></i>
               <div className="text-center">Add Task</div>
             </Link>
             <Link
               to="/all-tasks"
-              className="flex items-center justify-start  bg-blue-500 text-white text-xl font-medium w-full py-4 sm:w-1/2 sm:py-2  text-xl mt-2 mb-2 rounded-md"
+              className="flex items-center justify-start  bg-blue-500 hover:bg-blue-600 text-white text-xl font-medium w-full py-4 sm:w-1/3 sm:py-2  text-xl mt-2 mb-2 rounded-md"
             >
               <i className="fa-solid fa-list-check px-4 pr-8"></i>
               <div className="text-center">Show Task</div>
