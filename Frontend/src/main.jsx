@@ -3,14 +3,14 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
-import TaskContext from "./context/TaskContext.jsx";
+import TodoContext from "./context/TodoContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <TaskContext>
-      <BrowserRouter>
+    <TodoContext>
+      <BrowserRouter future={{ v7_relativeSplatPath: true }}>
         <App />
       </BrowserRouter>
-    </TaskContext>
+    </TodoContext>
   </StrictMode>
 );

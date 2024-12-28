@@ -1,5 +1,8 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import axios from "axios";
+import { TodoDataContext } from "../context/TodoContext";
+
 export default function TodoForm() {
   const [task, setTask] = useState("");
   const [description, setDescription] = useState("");
@@ -7,17 +10,33 @@ export default function TodoForm() {
 
   //useState for keep task Data in object form which we pass to backend
   const [taskData, setTaskData] = useState({});
+
+  const navigate = useNavigate();
+  // use the data from context
+  const { todo, setTodo } = React.useContext(TodoDataContext);
+
   //after the submission of the form state variables are have to be reset
-  const submitHandler = (event) => {
-    setTaskData({
-      task: task,
-      descritption: description,
-      markAsDone: markAsDone,
-    });
-    console.log(taskData);
+  const submitHandler = async (event) => {
     event.preventDefault();
-    setTask("");
-    setDescription("");
+
+    const newTask = {
+      taskName: task,
+      description: description,
+      markAsDone: markAsDone
+    };
+
+    const response = await axios.post(
+      `${import.meta.env.VITE_BASE_URL}/todo/task`,
+      newTask
+    );
+
+    if(response.status === 201){
+      const data = response.data;
+      setTodo(data.todo); // set the data to the context
+      navigate("/all-tasks");
+      setTask("");
+      setDescription("");
+    };
   };
   return (
     <>
@@ -44,6 +63,7 @@ export default function TodoForm() {
                 </label>
                 <input
                   required
+                  minLength={3}
                   type="text"
                   className="p-4 sm:px-4 sm:py-2 rounded-md text-xl border-4 border-transparent focus:border-green-700 focus:outline-none mt-4 mb-4"
                   id="title"
@@ -62,6 +82,7 @@ export default function TodoForm() {
                 </label>
                 <textarea
                   required
+                  minLength={10}
                   row="4"
                   cols="25"
                   id="description"
@@ -78,7 +99,7 @@ export default function TodoForm() {
               {/* Submit Button */}
 
               <div className="flex flex-col justify-evenly">
-                <button className="  flex items-center justify-center bg-green-700 hover:bg-green-800 text-white text-2xl font-medium text-center sm:px-2 px-3 py-3 text-xl mt-2 rounded-md ">
+                <button className=" flex items-center justify-center bg-green-700 hover:bg-green-800 text-white text-2xl font-medium text-center sm:px-2 px-3 py-3 text-xl mt-2 rounded-md ">
                   Add Task
                 </button>
                 <Link
