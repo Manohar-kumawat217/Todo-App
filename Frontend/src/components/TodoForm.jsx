@@ -33,7 +33,7 @@ export default function TodoForm() {
     if(response.status === 201){
       const data = response.data;
       setTodo(data.todo); // set the data to the context
-      navigate("/all-tasks");
+      navigate("/add-task");
       setTask("");
       setDescription("");
     };
