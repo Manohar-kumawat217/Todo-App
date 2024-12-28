@@ -6,7 +6,6 @@ import { TodoDataContext } from "../context/TodoContext";
 export default function TodoForm() {
   const [task, setTask] = useState("");
   const [description, setDescription] = useState("");
-  const [markAsDone, setMarkAsDone] = useState(false);
 
   //useState for keep task Data in object form which we pass to backend
   const [taskData, setTaskData] = useState({});
@@ -18,13 +17,13 @@ export default function TodoForm() {
   //after the submission of the form state variables are have to be reset
   const submitHandler = async (event) => {
     event.preventDefault();
-
+    console.log("before request sending");
     const newTask = {
       taskName: task,
       description: description,
       markAsDone: markAsDone
     };
-
+  try{
     const response = await axios.post(
       `${import.meta.env.VITE_BASE_URL}/todo/task`,
       newTask
@@ -36,7 +35,11 @@ export default function TodoForm() {
       navigate("/add-task");
       setTask("");
       setDescription("");
+      console.log(data);
     };
+  }catch(error){
+    console.log(error);
+  }
   };
   return (
     <>
