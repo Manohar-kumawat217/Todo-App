@@ -59,7 +59,7 @@ export default function ShowAllTask() {
       <div className="text-white h-screen bg-fixed bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1505635725851-c2cfe9e29112?q=80&w=1530&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] ">
         <Title />
         <h3 className="ml-4 mt-4 sm:text-start text-center text-3xl font-bold flex items-center">
-          { todos.length === 0 ?"Task List Is Empty":"All Tasks"}
+          { todos.length === 0 ?"Add task":"All Tasks"}
           <Link
             to="/add-task"
             className="flex items-center justify-center text-white text-2xl font-medium text-xl mt-2 rounded-md w-8 ml-2"
