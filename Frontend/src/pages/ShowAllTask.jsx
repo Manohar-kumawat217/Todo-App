@@ -12,7 +12,7 @@ export default function ShowAllTask() {
   useEffect(() => {  
     async function fetchData(){
     try{
-      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/todo/task`);
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}todo/task`);
       if(response.status === 200){
         setTodos(response.data.tasks);
       }
