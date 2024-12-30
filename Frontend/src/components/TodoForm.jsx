@@ -25,7 +25,7 @@ export default function TodoForm() {
     };
   try{
     const response = await axios.post(
-      `${import.meta.env.VITE_BASE_URL}/todo/task`,
+      `${import.meta.env.VITE_BASE_URL}todo/task`,
       newTask
     );
 
