@@ -27,7 +27,7 @@ export default function ShowAllTask() {
     try{
       //API request method
     //here we write the code for mark task as done
-    const response = await axios.put(`${import.meta.env.VITE_BASE_URL}/todo/task/${id}`);
+    const response = await axios.put(`${import.meta.env.VITE_BASE_URL}todo/task/${id}`);
 
     if(response.status === 200){
       const updatedtask = response.data.task;
@@ -43,7 +43,7 @@ export default function ShowAllTask() {
 
   const handleDelete = async(id) => {
     try{
-      const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}/todo/task/${id}`);
+      const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}todo/task/${id}`);
       if(response.status === 200){
         setTodos((prevTodos) => prevTodos.filter((todo) => todo._id !== id));
       }
