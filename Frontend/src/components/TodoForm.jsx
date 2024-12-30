@@ -21,7 +21,7 @@ export default function TodoForm() {
     const newTask = {
       taskName: task,
       description: description,
-      markAsDone: markAsDone
+      markAsDone: false
     };
   try{
     const response = await axios.post(
